@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haleem and Aneela: Road to Redemption</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: url("C:/Users/aneel/OneDrive/Desktop/HARTR/images/background.jpg") no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #f5f5f5;
+            margin-bottom: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 1.2em;
+            color: #f5f5f5;
+            margin-bottom: 20px;
+        }
+        .input-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .input-box {
+            padding: 10px;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: #f5f5f5;
+            border: 2px solid #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .iframe-container {
+            width: 80%;
+            height: 500px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #f5f5f5;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+        #password-section {
+            display: none;
+        }
+        #main-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="password-section">
+        <label for="password-input">Enter password:</label>
+        <input type="password" id="password-input" />
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+    <div id="main-content">
+        <h1>Haleem and Aneela: Road to Redemption</h1>
+        <p>Join us on our journey into improving ourselves and striving for inner peace</p>
+        <div class="input-container">
+            <div class="input-container">
+                <div class="input-box">
+                    <label for="aneela-goals">Aneela's Goals:</label>
+                    <input type="text" id="aneela-goals" placeholder="Enter Aneela's goals..." onchange="displayGoal('aneela')">
+                    <ul class="checklist" id="aneela-checklist"></ul>
+                </div>
+                <div class="input-box">
+                    <label for="haleem-goals">Haleem's Goals:</label>
+                    <input type="text" id="haleem-goals" placeholder="Enter Haleem's goals..." onchange="displayGoal('haleem')">
+                    <ul class="checklist" id="haleem-checklist"></ul>
+                </div>
+        <div class="website-container">
+                <label for="websites">Select a day to explore:</label>
+                <select id="websites" onchange="loadWebsite()">
+                    <option value="day1.html">Day 1</option>
+                    <option value="day2.html">Day 2</option>
+                    <option value="day3.html">Day 3</option>
+                </select>
+    </div>
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password-input").value;
+            if (password === "penchod") {
+                document.getElementById("password-section").style.display = "none";
+                document.getElementById("main-content").style.display = "block";
+            } else {
+                alert("Incorrect password. Try again.");
+            }
+        }
+        function displayGoal(person) {
+            var input = document.getElementById(person + "-goals");
+            var checklist = document.getElementById(person + "-checklist");
+            if (input.value !== "") {
+                var goalItem = document.createElement("li");
+                goalItem.innerHTML = `<input type="checkbox"> ${input.value}`;
+                checklist.appendChild(goalItem);
+                input.value = "";
+            }
+        }
+        function loadWebsite() {
+            var selectedWebsite = document.getElementById("websites").value;
+            document.getElementById("website-frame").src = selectedWebsite;
+        }
+        window.onload = function() {
+            document.getElementById("password-section").style.display = "block";
+        }
+
+    </script>
+</body>
+</html
+
+
