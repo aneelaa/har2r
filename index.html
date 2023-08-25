@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Haleem and Aneela: Road to Redemption</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Quicksand', sans-serif;
             background: url("https://whealthy-life.com/cdn/shop/articles/mountain-magic-hour_4460x4460_3f696e3d-2366-4f7d-845f-1080b09919a6_4000x.jpg?v=1550752235") no-repeat center center fixed;
@@ -18,36 +24,52 @@
             justify-content: center;
             padding: 20px;
         }
+
+        h1, p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
         h1 {
-            text-align: center;
             font-size: 2.5em;
-            color: #f5f5f5;
-            margin-bottom: 20px;
         }
+
         p {
-            text-align: center;
             font-size: 1.2em;
-            color: #f5f5f5;
-            margin-bottom: 20px;
         }
+
+        /* Styling for the containers holding the input boxes */
         .input-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 20px;
+            width: 100%;
+            max-width: 900px; /* Ensures the overall width doesn't get too wide on larger screens */
         }
+
+        /* Styling for individual input boxes */
         .input-box {
+            flex: 1; /* Allows for equal width among sibling elements */
+            min-width: 300px; /* Prevents boxes from becoming too narrow */
             padding: 10px;
             margin: 10px;
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid #f5f5f5;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        /* Wider select box as per request */
+        #websites {
+            width: 100%;
+        }
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
         }
-        input {
+
+        input[type="text"], input[type="password"], select {
             width: 100%;
             padding: 5px;
             font-family: 'Quicksand', sans-serif;
@@ -57,25 +79,13 @@
             border: 2px solid #f5f5f5;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .iframe-container {
-            width: 80%;
-            height: 500px;
-            margin: 0 auto;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 2px solid #f5f5f5;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-        }
-        #password-section {
-            display: none;
-        }
-        #main-content {
+
+        #password-section, #main-content {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <div id="password-section">
         <label for="password-input">Enter password:</label>
@@ -86,24 +96,62 @@
         <h1>Haleem and Aneela: Road to Redemption</h1>
         <p>Join us on our journey into improving ourselves and striving for inner peace</p>
         <div class="input-container">
-            <div class="input-container">
-                <div class="input-box">
-                    <label for="aneela-goals">Aneela's Goals:</label>
-                    <input type="text" id="aneela-goals" placeholder="Enter Aneela's goals..." onchange="displayGoal('aneela')">
-                    <ul class="checklist" id="aneela-checklist"></ul>
-                </div>
-                <div class="input-box">
-                    <label for="haleem-goals">Haleem's Goals:</label>
-                    <input type="text" id="haleem-goals" placeholder="Enter Haleem's goals..." onchange="displayGoal('haleem')">
-                    <ul class="checklist" id="haleem-checklist"></ul>
-                </div>
-        <div class="website-container">
+            <div class="input-box">
+                <label for="aneela-goals">Aneela's Goals:</label>
+                <input type="text" id="aneela-goals" placeholder="Enter Aneela's goals..." onchange="displayGoal('aneela')">
+                <ul class="checklist" id="aneela-checklist"></ul>
+            </div>
+            <div class="input-box">
+                <label for="haleem-goals">Haleem's Goals:</label>
+                <input type="text" id="haleem-goals" placeholder="Enter Haleem's goals..." onchange="displayGoal('haleem')">
+                <ul class="checklist" id="haleem-checklist"></ul>
+            </div>
+        </div>
+        <!-- Moved select section here and extended its width -->
+        <div class="input-container">
+            <div class="input-box">
                 <label for="websites">Select a day to explore:</label>
                 <select id="websites" onchange="loadWebsite()">
                     <option value="day1.html">Day 1</option>
                     <option value="day2.html">Day 2</option>
                     <option value="day3.html">Day 3</option>
                 </select>
+            </div>
+        </div>
+        <div class="input-container">
+            <div class="input-box">
+                <label for="aneela-emotion">Aneela's Emotion Check:</label>
+                <select id="aneela-emotion">
+                    <option value="0">Select an option</option>
+                    <option value="1">1:   😭 espress depresso</option>
+                    <option value="2">2:   😞 so saddddd</option>
+                    <option value="3">3:   😔</option>
+                    <option value="4">4:   😕</option>
+                    <option value="5">5:   😐</option>
+                    <option value="6">6:   🙂</option>
+                    <option value="7">7:   😊</option>
+                    <option value="8">8:   😁</option>
+                    <option value="9">9:   😂</option>
+                    <option value="10">10:🤩</option>
+                </select>
+            </div>
+            <div class="input-box">
+                <label for="haleem-emotion">Haleem's Emotion Check:</label>
+                <select id="haleem-emotion">
+                    <option value="0">Select an option</option>
+                    <option value="1">1:   😭 espress depresso</option>
+                    <option value="2">2:   😞 so saddddd</option>
+                    <option value="3">3:   😔</option>
+                    <option value="4">4:   😕</option>
+                    <option value="5">5:   😐</option>
+                    <option value="6">6:   🙂</option>
+                    <option value="7">7:   😊</option>
+                    <option value="8">8:   😁</option>
+                    <option value="9">9:   😂</option>
+                    <option value="10">10:🤩</option>
+                </select>
+            </div>
+        </div>
     </div>
     <script>
         function checkPassword() {
@@ -115,26 +163,38 @@
                 alert("UR DADS BALLS HACKER!!!");
             }
         }
+
         function displayGoal(person) {
             var input = document.getElementById(person + "-goals");
             var checklist = document.getElementById(person + "-checklist");
-            if (input.value !== "") {
-                var goalItem = document.createElement("li");
-                goalItem.innerHTML = `<input type="checkbox"> ${input.value}`;
-                checklist.appendChild(goalItem);
-                input.value = "";
+            var goal = input.value;
+            if (goal) {
+                checklist.innerHTML += '<li>' + goal + '</li>';
+                saveGoalsToStorage(person, goal);
+                input.value = '';
             }
         }
+
         function loadWebsite() {
-            var selectedWebsite = document.getElementById("websites").value;
-            document.getElementById("website-frame").src = selectedWebsite;
-        }
-        window.onload = function() {
-            document.getElementById("password-section").style.display = "block";
+            var website = document.getElementById("websites").value;
+            window.location.href = website;
         }
 
+        function saveGoalsToStorage(person, goal) {
+            var storedGoals = localStorage.getItem(person + "-goals");
+            if (!storedGoals) {
+                storedGoals = [];
+            } else {
+                storedGoals = JSON.parse(storedGoals);
+            }
+            storedGoals.push(goal);
+            localStorage.setItem(person + "-goals", JSON.stringify(storedGoals));
+        }
+        window.onload = function () {
+            document.getElementById("password-section").style.display = "block";
+            loadGoalsFromStorage();
+        }
     </script>
 </body>
-</html
 
-
+</html>
