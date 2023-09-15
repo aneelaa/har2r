@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+    <style>
+        /* Global styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: url("https://whealthy-life.com/cdn/shop/articles/mountain-magic-hour_4460x4460_3f696e3d-2366-4f7d-845f-1080b09919a6_4000x.jpg?v=1550752235") no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1,
+        p {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p1 {
+            font-size: 1.6em;
+        }
+
+        /* Corrected paragraph selectors */
+        p2 {
+            font-size: 1.2em;
+        }
+
+        h1 {
+            font-size: 4em;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 60px;
+        }
+
+        h3 {
+            font-size: 2.2em;
+        }
+
+
+
+        .input-container {
+            display: flex;
+            flex-direction: column; /* Change to column layout */
+            align-items: flex-start; /* Align input boxes with the video rows */
+            width: auto; /* Remove max-width to allow it to expand */
+            max-width: none; /* Remove max-width */
+        }
+
+        /* Styling for individual input boxes */
+        /* Styling for individual input boxes */
+        .input-box {
+            flex: 1;
+            min-width: auto; /* Remove the minimum width */
+            width: calc(50% - 100px); /* Make them 50% of the container width with spacing */
+            margin: 20px 0; /* Adjust vertical margin as needed */
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Wider select box as per request */
+        #websites {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 5px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: #f5f5f5;
+            border: 2px solid #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        /* Styling for individual dropdowns */
+        #aneela-emotion,
+        #haleem-emotion {
+            width: 100%;
+            padding: 5px;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.2);
+            color: #f5f5f5;
+            border: 2px solid #f5f5f5;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the dropdowns when focused (clicked) */
+        #aneela-emotion:focus,
+        #haleem-emotion:focus {
+            background: rgba(95, 102, 109, 0.68);/* Background color when focused */
+            color: #f5f5f5; /* Text color when focused */
+            outline: none;
+        }
+
+        /* Styling for the video container */
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+        }
+
+        /* CSS for the video rows */
+        .video-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        /* CSS for individual video items */
+        .video-item {
+            flex: 1;
+            max-width: calc(50% - 60px);
+            margin-right: 20px;
+        }
+
+        /* Set a fixed aspect ratio for the videos (portrait orientation) */
+        .video-item video {
+            width: 100%;
+            height: 0;
+            padding-bottom: 133.33%; /* 3:4 aspect ratio (portrait) */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* CSS for video captions */
+        .video-caption {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* Center the main content vertically and horizontally */
+        #main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Center the video container and set a max-width */
+        .video-container {
+            max-width: 900px;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        /* Emotion Check section and Summary section styling */
+        .input-container,
+        .summary-section {
+            display: flex;
+            flex-direction: row; /* Display emotion checks and summaries side by side */
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        /* Adjust the spacing between emotion checks and summaries */
+        .input-container .input-box,
+        .summary-section .summary-box {
+            margin: 10px;
+        }
+
+        /* Adjust video captions alignment */
+        .video-caption {
+            margin-top: 5px;
+        }
+
+        #content-container {
+            max-height: 80vh; /* Adjust the height as needed */
+            overflow-y: auto; /* Enable vertical scrolling within the container */
+            width: 100%;
+            padding: 20px;
+            margin-top: 70px;
+        }
+
+        /* Center the main content vertically and horizontally */
+        #main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100vh; /* Ensure container takes at least the full viewport height */
+            overflow-y: auto; /* Enable vertical scrolling when content exceeds viewport height */
+        }
+
+        #show-content-button {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: #fff; /* Text color */
+            border: none; /* Remove border */
+            padding: 10px 20px; /* Add some padding for better appearance */
+            cursor: pointer; /* Change cursor on hover */
+            font-size: 1.2em; /* Adjust font size */
+            position: absolute; /* Position the button absolutely */
+            bottom: 20px; /* Distance from the bottom */
+            right: 20px; /* Distance from the right */
+            z-index: 2; /* Ensure it's above other content */
+        }
+
+        /* Add smooth transition effect to the intro-content */
+        #intro-content {
+            transition: opacity 0.5s ease;
+            opacity: 1;
+        }
+
+        /* Hide the intro-content when scrolled down */
+        #intro-content.hidden {
+            opacity: 0;
+            pointer-events: none; /* Prevent interactions with hidden content */
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="main-container">
+
+    <!-- Content specific to Day 1 -->
+    <div id="intro-content">
+        <h1>Day 1</h1>
+        <p1 style="margin: 0 50px;">On this here first day, we  set forth on the trail of our project, 'Road to Redemption.'
+            For Haleem, it meant wrestling with his work demons, while Aneela aims to better her soul and shed some pounds along the way</p1>
+
+        <!-- Add the "Show More" button here -->
+        <button id="show-content-button">Show More</button>
+    </div>
+
+    <!-- Hidden content initially -->
+    <div id="hidden-content" style="display: none;">
+        <h2>Videos</h2>
+        <p2 style="margin: 0 50px;">Revisit our favorite moments captured in these vlogs</p2>
+        <br><br>
+
+        <!-- Row 1 -->
+        <div class="video-row">
+            <!-- Video 1 -->
+            <div class="video-item">
+                <iframe src="https://drive.google.com/file/d/1-YnMwb76AoetMo5sLgyBv1TvsjVmRSVf/preview" frameborder="0" allowfullscreen></iframe>
+                <div class="video-caption">Spiderman</div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="video-item">
+                <iframe src="https://drive.google.com/file/d/1-ZK_LElzk9VoTLwptH7_pfyPP23E08DT/preview" frameborder="0" allowfullscreen></iframe>
+                <div class="video-caption">Spiderman 2: Homeless</div>
+            </div>
+
+            <!-- Picture 1
+            <div class="video-item">
+                <img src="https://drive.google.com/file/d/1-WWjOx1Pdxgf8mzzCZl5Jk-QU51lvaRo/view?usp=sharing" alt="Image 1 Alt Text">
+                <div class="video-caption">Aneela's Broken plate</div>
+            </div> -->
+
+            <!-- Video 3 -->
+            <div class="video-item">
+                <iframe src="https://drive.google.com/file/d/1NRWqD3N5dO1vn-zOQtGGRk9a_rPkhdg-/preview" frameborder="0" allowfullscreen></iframe>
+                <div class="video-caption">Video 1: Vlog 3</div>
+            </div>
+
+            <!-- Video 4 -->
+            <div class="video-item">
+                <iframe src="https://drive.google.com/file/d/1-JcfQrxCBgUT9iXeOe9WMuISeM2bw9NC/preview" frameborder="0" allowfullscreen></iframe>
+                <div class="video-caption">Video 1: Vlog 4</div>
+            </div>
+            </div>
+
+
+        <!-- Row 4 -->
+        <div class="video-row">
+            <!-- Video 13 -->
+            <div class="video-item">
+                <iframe src="https://drive.google.com/file/d/1-kzflaLcULordVXrSKzfLfQDbXoKtI8f/preview" frameborder="0" allowfullscreen></iframe>
+                <div class="video-caption">Video 1: Vlog 5</div>
+            </div>
+
+            <!-- Video 14 -->
+            <div class="video-item">
+                <iframe src="https://drive.google.com/file/d/1-ChxgobgaF8Rr4m1qHiysLkjAKg43VYJ/preview" frameborder="0" allowfullscreen></iframe>
+                <div class="video-caption">Video 1: Vlog 6</div>
+            </div>
+        </div>
+        <h3>Emotion Check</h3>
+        <p2 style="margin: 0 50px;">How we felt on the day</p2>
+
+        <!-- Emotion Check section and Summary section -->
+        <div class="input-container">
+            <div class="input-box">
+                <label for="aneela-emotion">Aneela's Emotion Check:</label>
+                <select id="aneela-emotion">
+                    <option value="0">Select an option</option>
+                    <option value="1">1:   😭 espresso depresso</option>
+                    <option value="2">2:   😞 so saddddd</option>
+                    <option value="3">3:   😔 bad times</option>
+                    <option value="4">4:   😕 meh</option>
+                    <option value="5">5:   😐 not good or bad</option>
+                    <option value="6">6:   🙂 im at peace</option>
+                    <option value="7">7:   😊 happy</option>
+                    <option value="8">8:   😁 Yay</option>
+                    <option value="9">9:   😂 over the moon</option>
+                    <option value="10">10: 🤩 reached nirvana</option>
+                </select>
+            </div>
+            <div class="input-box">
+                <label for="haleem-emotion">Haleem's Emotion Check:</label>
+                <select id="haleem-emotion">
+                    <option value="0">Select an option</option>
+                    <option value="1">1: 😭 espresso depresso</option>
+                    <option value="2">2: 😞 so saddddd</option>
+                    <option value="3">3: 😔 bad times</option>
+                    <option value="4">4: 😕 meh</option>
+                    <option value="5">5: 😐 not good or bad</option>
+                    <option value="6">6: 🙂 im at peace</option>
+                    <option value="7">7: 😊 happy</option>
+                    <option value="8">8: 😁 Yay</option>
+                    <option value="9">9: 😂 over the moon</option>
+                    <option value="10">10: 🤩 reached nirvana</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Summary section -->
+        <h3>Summary</h3>
+        <div class="summary-section">
+            <div class="summary-box">
+                <div class="summary-box">
+                    <p1>Aneela's Comments</p1>
+                    <textarea id="aneela-comments" rows="4" cols="50"></textarea>
+                    <button onclick="saveAneelaComments()">Save</button>
+                </div>
+
+                <div class="summary-box">
+                    <p1>Haleem's Comments</p1>
+                    <textarea id="haleem-comments" rows="4" cols="50"></textarea>
+                    <button onclick="saveHaleemComments()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to toggle the visibility of hidden content
+    function toggleHiddenContent() {
+        const hiddenContent = document.getElementById("hidden-content");
+        const introContent = document.getElementById("intro-content");
+
+        if (hiddenContent.style.display === "none" || hiddenContent.style.display === "") {
+            hiddenContent.style.display = "block";
+            introContent.classList.add("hidden");
+            // Hide the "Show More" button when content is shown
+            showContentButton.style.display = "none";
+        } else {
+            hiddenContent.style.display = "none";
+            introContent.classList.remove("hidden");
+        }
+    }
+
+    function handleScroll() {
+        const introContent = document.getElementById("intro-content");
+        const scrollY = window.scrollY;
+
+        // Adjust this value based on when you want to show the "Day 1" content again
+        const showIntroContentThreshold = 450;
+
+        if (scrollY <= showIntroContentThreshold) {
+            introContent.classList.remove("hidden");
+        } else {
+            introContent.classList.add("hidden");
+        }
+    }
+
+    // Add an event listener to the "Show More" button
+    const showContentButton = document.getElementById("show-content-button");
+    showContentButton.addEventListener("click", toggleHiddenContent);
+
+    // Add an event listener to handle scroll events
+    window.addEventListener("scroll", handleScroll);
+
+    // Function to load videos
+    function loadVideos() {
+        const videoElements = document.querySelectorAll('.video-item iframe');
+        videoElements.forEach(function (video) {
+            const videoSrc = video.getAttribute('data-src');
+            if (videoSrc) {
+                video.src = videoSrc;
+            }
+        });
+    }
+
+
+
+    // Function to add event listeners for emotion checks
+    function addEmotionCheckEventListeners() {
+        const aneelaEmotionSelect = document.getElementById("aneela-emotion");
+        const haleemEmotionSelect = document.getElementById("haleem-emotion");
+
+        aneelaEmotionSelect.addEventListener("change", function () {
+            // Handle Aneela's emotion check change event here.
+            const selectedEmotion = aneelaEmotionSelect.value;
+            console.log("Aneela's emotion is: " + selectedEmotion);
+        });
+
+        haleemEmotionSelect.addEventListener("change", function () {
+            // Handle Haleem's emotion check change event here.
+            const selectedEmotion = haleemEmotionSelect.value;
+            console.log("Haleem's emotion is: " + selectedEmotion);
+        });
+    }
+
+    function saveAneelaComments() {
+        const aneelaComments = document.getElementById("aneela-comments").value;
+        // Send a request to the backend to save Aneela's comments
+        saveComments("aneela", aneelaComments);
+    }
+
+    function saveHaleemComments() {
+        const haleemComments = document.getElementById("haleem-comments").value;
+        // Send a request to the backend to save Haleem's comments
+        saveComments("haleem", haleemComments);
+    }
+
+    function saveComments(person, comments) {
+        // Send a POST request to the backend to save comments
+        const url = `/saveComments?person=${person}&comments=${comments}`;
+        fetch(url, { method: "POST" })
+            .then(response => {
+                if (response.status === 200) {
+                    alert(`${person}'s comments saved successfully!`);
+                } else {
+                    alert(`Failed to save ${person}'s comments.`);
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    }
+
+    // Define arrays to store Aneela's and Haleem's comments
+    const aneelaCommentsArray = [];
+    const haleemCommentsArray = [];
+
+    // Function to save a comment
+    function saveComment(name, text) {
+        // Create a new Comment object
+        const comment = new Comment(name, text);
+
+        // Determine which array to add the comment to based on the name
+        if (name === "Aneela") {
+            aneelaCommentsArray.push(comment);
+        } else if (name === "Haleem") {
+            haleemCommentsArray.push(comment);
+        }
+    }
+
+
+
+
+    // Call the functions to initialize video loading, emotion options, and event listeners
+    loadVideos();
+    populateEmotionOptions();
+    addEmotionCheckEventListeners()
+</script>
+</body>
+</html>
